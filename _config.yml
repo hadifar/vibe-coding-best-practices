@@ -25,6 +25,7 @@ aux_links:
 
 plugins:
   - jekyll-seo-tag
+  - jekyll-sitemap
 
 defaults:
   - scope:

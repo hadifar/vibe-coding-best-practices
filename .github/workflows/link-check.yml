@@ -1,0 +1,28 @@
+name: Check for broken links
+
+on:
+  schedule:
+    - cron: "0 6 1,15 * *" # 06:00 UTC on the 1st and 15th of each month (~biweekly)
+  workflow_dispatch:
+
+jobs:
+  lychee:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Link Checker
+        id: lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --no-progress --exclude-mail './**/*.md' './**/*.html'
+          fail: false
+
+      - name: Create Issue on Failure
+        if: steps.lychee.outputs.exit_code != 0
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "Broken links found in scheduled check"
+          content-filepath: ./lychee/out.md
+          labels: report,broken-links
