@@ -1,5 +1,8 @@
 <div align="center">
-  <img src="assets/images/logo.png" alt="Vibe Coding & Agentic Coding logo" width="120" style="background:#fff;border-radius:12px;padding:12px">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/images/logo-dark.png">
+    <img src="assets/images/logo.png" alt="Vibe Coding & Agentic Coding logo" width="120">
+  </picture>
 </div>
 
 # Vibe Coding & Agentic Coding
