@@ -27,4 +27,3 @@ A quick comparison of tools people use for vibe-coding and agentic coding. Fill 
 - **Extensibility** — hooks, MCP servers, custom subagents/skills.
 - **Cost model** — subscription vs. usage-based API billing.
 
-_Add your own hands-on notes here as you try each tool._
