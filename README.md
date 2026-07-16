@@ -11,10 +11,6 @@
 
 A practical guide to building software by collaborating with AI coding agents — concepts, tool comparisons, workflow patterns, and curated resources.
 
-**Site:** https://hadifar.github.io/vibe-coding-best-practices/
-
-Built with [Jekyll](https://jekyllrb.com/) and the [Just the Docs](https://just-the-docs.com/) theme.
-
 
 ## Contributing
 
@@ -22,12 +18,12 @@ Anything you think is missing is welcome!
 
 1. **Fork the repo**
    ```bash
-   git clone https://github.com/<your-username>/vibe-coding-best-practices.git
+   git clone https://github.com/hadifar/vibe-coding-best-practices.git
    cd vibe-coding-best-practices
    ```
 2. **Create a branch** 
    ```bash
-   git checkout -b my-change
+   git checkout -b mybranch
    ```
 3. **Install dependencies and run the site locally** so you can preview your edits.
    ```bash
@@ -39,7 +35,7 @@ Anything you think is missing is welcome!
    ```yaml
    ---
    title: Page title
-   parent: Tools        # omit for a top-level page
+   parent: Tools        
    nav_order: 1
    description: "One-sentence summary of the page."
    layout: minimal
