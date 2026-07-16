@@ -33,4 +33,35 @@ Then open http://localhost:4000/vibe-coding-best-practices/
 
 ## Contributing
 
-Contributions are welcome — corrections, new tool comparisons, or workflow patterns worth documenting. Pages live under [`docs/`](docs) as Markdown files with Just the Docs front matter. Open a PR or file an issue on [GitHub](https://github.com/hadifar/vibe-coding-best-practices).
+Anything you think is missing is welcome!
+
+1. **Fork the repo**
+   ```bash
+   git clone https://github.com/<your-username>/vibe-coding-best-practices.git
+   cd vibe-coding-best-practices
+   ```
+2. **Create a branch** 
+   ```bash
+   git checkout -b my-change
+   ```
+3. **Install dependencies and run the site locally** (see [Local development](#local-development) above) so you can preview your edits at http://localhost:4000/vibe-coding-best-practices/.
+4. **Edit or add a page** under [`docs/`](docs). Pages are Markdown files with Just the Docs front matter, for example:
+   ```yaml
+   ---
+   title: Page title
+   parent: Tools        # omit for a top-level page
+   nav_order: 1
+   description: "One-sentence summary of the page."
+   layout: minimal
+   ---
+   ```
+   - Top-level sections (`Intro`, `Tools`, `Workflows`, `Resources`) live directly in `docs/`.
+   - Sub-pages live in a matching subfolder (e.g. `docs/tools/landscape.md`) and set `parent:` to the section title.
+5. **Commit and push**
+   ```bash
+   git add .
+   git commit -m "Describe your change"
+   git push origin my-change
+   ```
+6. **Open a pull request** against `main` on [GitHub](https://github.com/hadifar/vibe-coding-best-practices), describing what you changed and why.
+
