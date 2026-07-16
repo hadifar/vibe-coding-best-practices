@@ -8,10 +8,10 @@ layout: minimal
 
 # YC Guide to Vibe Coding
 
-Notes from a talk by YC partner Tom Blomfield on practical vibe-coding technique.
+Notes from talks at YC.
 
-- Original video: [YouTube — Tom Blomfield, "How to vibe code"](https://www.youtube.com/watch?v=BJjsfNO5JTo)
-
+- [YouTube - Tom Blomfield, "How to vibe code"](https://www.youtube.com/watch?v=BJjsfNO5JTo)
+- [Youtube - Y Combinator, "Vibe Coding Is The Future"](https://www.youtube.com/watch?v=IACHfKmZMr8)
 ## Planning process
 
 - **Create a comprehensive plan**: Start by working with the AI to write a detailed implementation plan in a markdown file.
