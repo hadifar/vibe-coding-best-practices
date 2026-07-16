@@ -1,4 +1,6 @@
-<img src="assets/images/logo.png" alt="Vibe Coding & Agentic Coding logo" width="120">
+<div align="center">
+  <img src="assets/images/logo.png" alt="Vibe Coding & Agentic Coding logo" width="120">
+</div>
 
 # Vibe Coding & Agentic Coding
 
