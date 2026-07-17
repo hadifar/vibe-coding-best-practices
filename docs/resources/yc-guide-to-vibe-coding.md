@@ -6,80 +6,93 @@ description: "YC guide on practical vibe-coding technique."
 layout: minimal
 ---
 
-# YC Guide to Vibe Coding
+# YC guide to vibe coding
 
 Notes from talks at YC.
 
 - [YouTube - Tom Blomfield, "How to vibe code"](https://www.youtube.com/watch?v=BJjsfNO5JTo)
 - [Youtube - Y Combinator, "Vibe Coding Is The Future"](https://www.youtube.com/watch?v=IACHfKmZMr8)
-## Planning process
 
-- **Create a comprehensive plan**: Start by working with the AI to write a detailed implementation plan in a markdown file.
-- **Review and refine**: Delete unnecessary items, mark features as won't-do if too complex.
-- **Maintain scope control**: Keep a separate section for ideas for later to stay focused.
-- **Implement incrementally**: Work section by section rather than attempting to build everything at once.
-- **Track progress**: Have the AI mark sections as complete after successful implementation.
-- **Commit regularly**: Ensure each working section is committed to Git before moving to the next.
+## General rule of thumb
 
-## Version control strategies
+The best technique is to do what a professional software engineer already does. **Small code**, **modularity**, and
+**abstraction** are your friends — they help both you and the LLM reason about the project.
 
-- **Use Git religiously**: Don't rely solely on the AI tools' revert functionality.
-- **Start clean**: Begin each new feature with a clean Git slate.
-- **Reset when stuck**: Use `git reset --hard HEAD` if the AI goes on a vision quest.
-- **Avoid cumulative problems**: Multiple failed attempts create layers and layers of bad code.
-- **Clean implementation**: When you finally find a solution, reset and implement it cleanly.
+> Note: this advice will likely shift over the next few months. As models
+> get more capable, some of these guardrails will loosen.
 
-## Testing framework
 
-- **Prioritize high-level tests**: Focus on end-to-end integration tests over unit tests.
-- **Simulate user behavior**: Test features by simulating someone clicking through the site/app.
-- **Catch regressions**: LLMs often make unnecessary changes to unrelated logic.
-- **Test before proceeding**: Ensure tests pass before moving to the next feature.
-- **Use tests as guardrails**: Some founders recommend starting with test cases to provide clear boundaries.
+## Plan before you build
 
-## Effective bug fixing
+Don't ask the model to one-shot the whole project. Instead, create a planning file (a
+`CLAUDE.md` or a plain markdown file) that lays out step by step what you want to build.
+Iterate on it over time and revise it whenever your understanding changes. You can even
+use a Planner agent to help revise it.
 
-- **Leverage error messages**: Simply copy-pasting error messages is often enough for the AI.
-- **Analyze before coding**: Ask the AI to consider multiple possible causes.
-- **Reset after failures**: Start with a clean slate after each unsuccessful fix attempt.
-- **Implement logging**: Add strategic logging to better understand what's happening.
-- **Switch models**: Try different AI models when one gets stuck.
-- **Clean implementation**: Once you identify the fix, reset and implement it on a clean codebase.
+Some sections that are useful to keep in that file:
 
-## AI tool optimization
+```markdown
+# Preliminaries
+- Stack: pydantic, FastAPI, pydantic-settings, ...
 
-- **Create instruction files**: Write detailed instructions for your AI in appropriate files (`cursor.rules`, `windsurf.rules`, `claude.md`).
-- **Local documentation**: Download API documentation to your project folder for accuracy.
-- **Use multiple tools**: Some founders run both Cursor and Windsurf simultaneously on the same project.
-- **Tool specialization**: Cursor is a bit faster for frontend work, while Windsurf thinks longer.
-- **Compare outputs**: Generate multiple solutions and pick the best one.
+# Priorities
+## 1. General architecture for this project
+## 2. Use MongoDB as the database
+## 3. ...
 
-## Complex feature development
+# Do not implement
+- (things to explicitly keep out of scope)
 
-- **Create standalone prototypes**: Build complex features in a clean codebase first.
-- **Use reference implementations**: Point the AI to working examples to follow.
-- **Clear boundaries**: Maintain consistent external APIs while allowing internal changes.
-- **Modular architecture**: Service-based architectures with clear boundaries work better than monorepos.
+# Ideas for later
+- (parking lot for scope you're deferring)
+```
 
-## Tech stack considerations
+Then ask the LLM to implement one section at a time. **Ask small.** Narrow requests are
+easier to review, easier to test, and easier to roll back when they go wrong.
 
-- **Established frameworks excel**: Ruby on Rails works well due to 20 years of consistent conventions.
-- **Training data matters**: Newer languages like Rust or Elixir may have less training data.
-- **Modularity is key**: Small, modular files are easier for both humans and AIs to work with.
-- **Avoid large files**: Don't have files that are thousands of lines long.
+## Version control
 
-## Beyond coding
+Use git extensively — for essentially every feature:
 
-- **DevOps automation**: Use AI for configuring servers, DNS, and hosting.
-- **Design assistance**: Generate favicons and other design elements.
-- **Content creation**: Draft documentation and marketing materials.
-- **Educational tool**: Ask the AI to explain implementations line by line.
-- **Use screenshots**: Share UI bugs or design inspiration visually.
-- **Voice input**: Tools like Aqua enable 140 words per minute input.
+- Create a branch and try out your idea.
+- If it works, merge it.
+- If it doesn't, go back to the branch and try again with a different prompt.
+- Make sure what you push is clean and ready.
 
-## Continuous improvement
 
-- **Regular refactoring**: Once tests are in place, refactor frequently.
-- **Identify opportunities**: Ask the AI to find refactoring candidates.
-- **Stay current**: Try every new model release.
-- **Recognize strengths**: Different models excel at different tasks.
+## Testing
+
+Write **high-level tests** rather than tests for tiny individual functions. High-level
+tests capture the behavior you actually care about, so that future changes — whether made
+by you or the model — don't quietly destroy your logic.
+
+## Fixing bugs
+
+Often the fastest fix is the simplest: copy and paste the output of the error, the
+JavaScript console, or the IDE logs straight into the model. That context alone is
+frequently enough for it to find and fix the problem.
+
+## Documentation
+
+Give the model good docs to work from:
+
+- Download documentation locally and point the LLM at it.
+- Reference it via a link.
+- Or expose it through an MCP server so the model can pull it in on demand.
+
+## Complex functionality
+
+For a hard or unfamiliar feature, build it in a **separate project**, isolated from your
+main codebase (sometimes this is even someone else's project on GitHub). Then ask the LLM
+to implement the feature in your project while respecting your existing code. This keeps
+experimental complexity away from your working code until it's ready.
+
+## Refactor frequently
+
+Ask your LLM to refactor regularly:
+
+- Remove dead code, repetitive code, and junk.
+- Keep large files smaller and more modular.
+
+Frequent, small refactors keep the codebase in a shape that both you and the model can
+keep working in effectively.
