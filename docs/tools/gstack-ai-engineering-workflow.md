@@ -82,7 +82,7 @@ Optionally, add gstack to the current project too, so teammates get it.
 5. Run `/qa` on your staging URL.
 6. Stop there. You'll know if this is for you.
 
-## Starting with /office-hours
+### Starting with /office-hours
 
 `/office-hours` is where you begin. Before you write any code, it acts as a structured
 brainstorming partner that helps you **upgrade and revise your idea** — honing it toward
