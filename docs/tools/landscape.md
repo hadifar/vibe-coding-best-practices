@@ -18,5 +18,5 @@ A quick comparison of tools people use for vibe-coding and agentic coding. Fill 
 | **Aider** | CLI | Terminal | Open-source, git-native, works with many model backends | [aider.chat](https://aider.chat) |
 | **Windsurf** | IDE | Desktop | "Cascade" agent flow, multi-file edits | [windsurf.com](https://windsurf.com) |
 | **Devin** | Autonomous agent | Cloud sandbox | Longer-running autonomous tasks, less interactive | [devin.ai](https://devin.ai) |
-| **Conductor** | Parallel-agent desktop app | Desktop (macOS) | Runs multiple agents in parallel, each in its own git worktree | [conductor.build](https://www.conductor.build/) |
+| **Conductor** | IDE | Desktop (macOS) | Runs multiple agents in parallel, each in its own git worktree | [conductor.build](https://www.conductor.build/) |
 
