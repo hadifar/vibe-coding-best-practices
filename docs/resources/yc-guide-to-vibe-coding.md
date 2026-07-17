@@ -7,11 +7,7 @@ layout: minimal
 ---
 
 # YC guide to vibe coding
-
-Notes from talks at YC.
-
-- [YouTube - Tom Blomfield, "How to vibe code"](https://www.youtube.com/watch?v=BJjsfNO5JTo)
-- [Youtube - Y Combinator, "Vibe Coding Is The Future"](https://www.youtube.com/watch?v=IACHfKmZMr8)
+These are the notes from talks at *Y Combinator*.
 
 ## General rule of thumb
 
@@ -96,3 +92,8 @@ Ask your LLM to refactor regularly:
 
 Frequent, small refactors keep the codebase in a shape that both you and the model can
 keep working in effectively.
+
+# References
+
+- [YouTube - Tom Blomfield, "How to vibe code"](https://www.youtube.com/watch?v=BJjsfNO5JTo)
+- [Youtube - Y Combinator, "Vibe Coding Is The Future"](https://www.youtube.com/watch?v=IACHfKmZMr8)

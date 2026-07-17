@@ -1,17 +1,10 @@
 ---
-title: "Gstack: An AI Engineering Workflow"
+title: "Gstack: An AI engineering workflow"
 parent: Resources
 nav_order: 2
 description: "Gstack — a collection of SKILL.md files that give AI agents structured roles across the software sprint."
 layout: minimal
 ---
-
-# Gstack: An AI Engineering Workflow
-
-Notes on Garry Tan's AI coding setup.
-
-- [YC Library — "Inside Garry Tan's AI Coding Setup"](https://www.ycombinator.com/library/OW-inside-garry-tan-s-ai-coding-setup)
-- [GitHub — garrytan/gstack](https://github.com/garrytan/gstack)
 
 ## What is gstack
 
@@ -82,3 +75,9 @@ plausible code faster than an unstructured human can review it. gstack front-loa
 things that keep that speed useful: **structured context** (think, plan, design) and
 **verification** (review, test, ship). The agent supplies throughput; the roles and gates
 supply judgment.
+
+# References
+
+- [YC Library — "Inside Garry Tan's AI Coding Setup"](https://www.ycombinator.com/library/OW-inside-garry-tan-s-ai-coding-setup)
+- [GitHub — garrytan/gstack](https://github.com/garrytan/gstack)
+
