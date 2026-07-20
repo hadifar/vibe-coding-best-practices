@@ -56,13 +56,14 @@ Anything you think is missing is welcome!
 If you'd rather not hand-write the front matter and file it yourself, use the `/blog`
 Claude Code skill:
 
-1. **Clone the repo** ```bash
+1. **Clone the repo**
+   ```bash
    git clone https://github.com/hadifar/agentic-software-development-playbook.git
    cd agentic-software-development-playbook
    ```
 
 2. **Drop a raw draft** into [`_inbox/`](_inbox) as a plain `.txt` or `.md` file. Name it
-   anything (e.g. `my-post-about-vibing.txt`); 
+   anything (e.g. `my-post-about-vibing.txt`).
 3. **Run `/blog`** in Claude Code. The skill will:
    - **Classify** the draft into `docs/tools/`, `docs/workflows/`, or `docs/resources/`.
    - **Write** a properly formatted post — front matter, next `nav_order`, style matched to
