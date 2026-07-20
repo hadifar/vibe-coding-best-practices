@@ -7,7 +7,7 @@
 
 # Agentic Software Development Playbook
 
-[![Deploy Jekyll site to Pages](https://github.com/hadifar/vibe-coding-best-practices/actions/workflows/pages.yml/badge.svg)](https://github.com/hadifar/vibe-coding-best-practices/actions/workflows/pages.yml)
+[![Deploy Jekyll site to Pages](https://github.com/hadifar/agentic-software-development-playbook/actions/workflows/pages.yml/badge.svg)](https://github.com/hadifar/agentic-software-development-playbook/actions/workflows/pages.yml)
 
 A practical guide to agentic software development — building software by collaborating with AI coding agents: concepts, tool comparisons, workflow patterns, and curated resources.
 
@@ -18,8 +18,8 @@ Anything you think is missing is welcome!
 
 1. **Fork the repo**
    ```bash
-   git clone https://github.com/hadifar/vibe-coding-best-practices.git
-   cd vibe-coding-best-practices
+   git clone https://github.com/hadifar/agentic-software-development-playbook.git
+   cd agentic-software-development-playbook
    ```
 2. **Create a branch** 
    ```bash
@@ -30,7 +30,7 @@ Anything you think is missing is welcome!
    bundle install --path vendor/bundle
    bundle exec jekyll serve
    ```
-   Then open http://localhost:4000/vibe-coding-best-practices/
+   Then open http://localhost:4000/agentic-software-development-playbook/
 4. **Edit or add a page** under [`docs/`](docs). Pages are Markdown files with Just the Docs front matter, for example:
    ```yaml
    ---
@@ -49,7 +49,7 @@ Anything you think is missing is welcome!
    git commit -m "Describe your change"
    git push origin my-change
    ```
-6. **Open a pull request** against `main` on [GitHub](https://github.com/hadifar/vibe-coding-best-practices), describing what you changed and why.
+6. **Open a pull request** against `main` on [GitHub](https://github.com/hadifar/agentic-software-development-playbook), describing what you changed and why.
 
 ### Fast contribution!
 
@@ -57,8 +57,8 @@ If you'd rather not hand-write the front matter and file it yourself, use the `/
 Claude Code skill:
 
 1. **Clone the repo** ```bash
-   git clone https://github.com/hadifar/vibe-coding-best-practices.git
-   cd vibe-coding-best-practices
+   git clone https://github.com/hadifar/agentic-software-development-playbook.git
+   cd agentic-software-development-playbook
    ```
 
 2. **Drop a raw draft** into [`_inbox/`](_inbox) as a plain `.txt` or `.md` file. Name it

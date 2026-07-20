@@ -1,6 +1,6 @@
 title: Agentic Software Development Playbook
 description: A practical guide to agentic software development — concepts, tools, workflows, and resources.
-baseurl: "/vibe-coding-best-practices"
+baseurl: "/agentic-software-development-playbook"
 url: "https://hadifar.github.io"
 
 theme: just-the-docs
@@ -17,11 +17,11 @@ favicon_ico: "/favicon.ico"
 nav_sort: default
 nav_external_links:
   - title: GitHub
-    url: https://github.com/hadifar/vibe-coding-best-practices
+    url: https://github.com/hadifar/agentic-software-development-playbook
 
 aux_links:
   "Home":
-    - "/vibe-coding-best-practices/"
+    - "/agentic-software-development-playbook/"
 
 plugins:
   - jekyll-seo-tag
