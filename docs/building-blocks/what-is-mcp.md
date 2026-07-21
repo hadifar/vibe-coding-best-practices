@@ -14,7 +14,7 @@ helps to understand **tool-calling** first — MCP is built on top of it.
 ## Tool-calling
 
 Tool-calling is a capability that lets an AI model (like an LLM) interact with the outside
-world by invoking external functions, APIs, or data.
+world by invoking external functions or APIs.
 
 Here's a simple example of tool-calling in Python with two tools, `bash_tool` and
 `web_search`:
@@ -49,8 +49,9 @@ while True:
     print(f"Tool Output: {tool_output}\n")
 ```
 
-That's tool-calling in a nutshell: the model picks a tool, supplies arguments, and reads
-back the result. So what does MCP add?
+That's tool-calling in a nutshell: the model picks a tool (e.g. `web_search` or
+`bash_tool`) and supplies the right arguments (e.g. `query: "who won the 2022 World
+Cup"`), the tool is executed — locally or remotely — and the model reads back the result.
 
 ## What is MCP?
 
@@ -75,6 +76,20 @@ Many organizations already publish MCP servers, for example:
 
 ## Writing your own MCP server
 
+### The easy way
+
+Ask Claude to do it for you. First install the `mcp-server-dev` plugin from Claude Code:
+
+```text
+/plugin marketplace add anthropics/claude-plugins-official
+/plugin install mcp-server-dev
+```
+
+With its skills installed, ask Claude to build the server for you — for example:
+`help me build an MCP server with two tools, web_search and bash_tool`.
+
+### Doing it yourself
+
 Here are the same two tools from the tool-calling example above, this time exposed through
 an MCP server using the Python SDK's `FastMCP` helper:
 
@@ -88,16 +103,17 @@ mcp = FastMCP("mymcp")
 
 
 @mcp.tool()
-def bash_tool():
+def bash_tool(command: str) -> str:
+    """Run a shell command and return its output."""
     ...
 
 @mcp.tool()
-def web_search():
+def web_search(query: str) -> str:
+    """Search the web and return the results."""
     ...
 
 def main():
-    mcp.run(transport="stdio")
-
+    mcp.run(transport="http", host="0.0.0.0", port=3000)
 
 if __name__ == "__main__":
     main()
@@ -106,9 +122,31 @@ if __name__ == "__main__":
 ```
 
 The `@mcp.tool()` decorator is what turns a plain Python function into a tool the server
-advertises — any MCP client can then discover both tools and call them the same way. Here
-`transport="stdio"` runs the server as a local process the client launches itself; servers, like above examples, 
-can also be hosted remotely and connected to over HTTP.
+advertises — its signature and docstring become the description an MCP client discovers, so
+any client can then call both tools the same way.
+
+You can then inspect the tools with the MCP inspector:
+
+```bash
+npx @modelcontextprotocol/inspector
+# → select "Streamable HTTP", paste http://localhost:3000/mcp as the URL, click Connect
+```
+
+The example above is deliberately minimal. A real server needs decisions this snippet skips,
+and [Anthropic's official example](https://github.com/anthropics/claude-plugins-official/blob/main/plugins/mcp-server-dev/skills/build-mcp-server/SKILL.md)
+frames them as five questions:
+
+- **What does it connect to?** Decides the deployment shape — remote HTTP as in the example
+  above, a bundled MCPB, or local stdio.
+- **Who will use it?** A single team, broad public distribution, and Claude desktop users
+  wanting UI features each point somewhere different.
+- **How many distinct actions does it expose?** A handful is fine as one tool per action; a
+  large surface is better served by a search-plus-execute pair, so the model isn't handed
+  dozens of near-identical tools.
+- **Does a tool need mid-call user input or rich display?** Plain tools cover most cases;
+  otherwise you reach for elicitation or MCP app widgets.
+- **What auth does the upstream service use?** An API key is trivial; OAuth, CIMD, or DCR
+  flows are where most of the real complexity lands.
 
 ## How do LLMs use MCP?
 
@@ -145,6 +183,7 @@ Beyond solving the integration problem, MCP also addresses:
 ## References
 
 - [Model Context Protocol — Getting started](https://modelcontextprotocol.io/docs/getting-started/intro)
+- [Anthropic — build-mcp-server skill](https://github.com/anthropics/claude-plugins-official/blob/main/plugins/mcp-server-dev/skills/build-mcp-server/SKILL.md)
 - [Stytch — An introduction to the Model Context Protocol](https://stytch.com/blog/model-context-protocol-introduction/)
 - [GitHub — asgeirtj/system_prompts_leaks](https://github.com/asgeirtj/system_prompts_leaks)
 - [GitHub MCP server](https://github.com/github/github-mcp-server#tools)
